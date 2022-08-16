@@ -133,4 +133,99 @@
     \printbibliography
 \end{frame}
 
+\begin{frame}[allowframebreaks]{Phụ lục}
+	\begin{enumerate}
+		\item  Gradient Descent
+		\begin{equation*}
+			\begin{cases}g_t = \nabla f(w_{t-1}) \\ w_t = w_{t-1} - \alpha g_t\end{cases}
+		\end{equation*}
+		\item Momentum
+		\begin{equation*}
+			\begin{cases}m_0 = 0 \\ g_t = \nabla f(w_{t-1}) 
+				\\ m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t\\ w_t = w_{t-1} - \alpha m_t\end{cases}
+		\end{equation*}
+		\item Adagrad
+		\begin{equation*}
+			\begin{cases}v_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ v_t = v_{t-1} + g_t^2 \\ w_t = w_{t-1} - \alpha \dfrac{g_t}{\sqrt{v_t} + \epsilon} \end{cases}
+		\end{equation*}
+		\item Adadelta
+		\begin{equation*}
+			\begin{cases}v_0 = 0\\d_0 = 0 \\ g_t = \nabla f(w_{t-1}) \\ v_t = \beta v_{t-1} + (1-\beta)g_t^2 \\ \Delta w = - \alpha \dfrac{\sqrt{d_{t-1} + \epsilon}g_t}{\sqrt{v_t + \epsilon}} \\ w_t = w_{t-1} + \Delta w \\ d_t = \beta d_{t-1} + (1 - \beta) \Delta w^2 \end{cases}
+		\end{equation*}
+		\item RMSProp
+		\begin{equation*}
+			\begin{cases}v_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ v_t = \beta v_{t-1} + (1-\beta)g_t^2 \\ w_t = w_{t-1} - \alpha \dfrac{g_t}{\sqrt{v_t} + \epsilon} \end{cases}
+		\end{equation*}
+		\item Adam
+		\begin{equation*}
+			\begin{cases}m_0 = 0\\ v_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \\
+				\hat{m}_t = \dfrac{m_t}{1 - \beta_1^t} \\ \hat{v}_t = \dfrac{v_t}{1 - \beta_2^t} \\ w_t = w_{t-1} - \alpha \dfrac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} \end{cases}
+		\end{equation*}
+		\item Adamax
+		\begin{equation*}
+			\begin{cases}m_0 = 0\\ u_0 = 0 \\ g_t = \nabla f(w_{t-1}) \\ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \\ u_t = \max(\beta_2 u_{t-1}, \lVert g_t \rVert_{\infty}) \\ w_t = w_{t-1} - \alpha \dfrac{m_t}{(1 - \beta_1^t)u_t + \epsilon}\end{cases}
+		\end{equation*}
+		\item AMSGrad
+		\begin{equation*}
+			\begin{cases}m_0 = 0\\ v_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \\ \hat{v}_t = \max(\hat{v}_{t-1}, v_t) \\ w_t = w_{t-1} - \alpha \dfrac{m_t}{\sqrt{\hat{v}_t} + \epsilon} \end{cases}
+		\end{equation*}
+		\item Nadam
+		\begin{equation*}
+			\begin{cases}m_0 = 0\\ v_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \\ v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2 \\
+				\hat{m}_t = \dfrac{m_t}{1 - \beta_1^t} \\ \hat{v}_t = \dfrac{v_t}{1 - \beta_2^t} \\ w_t = w_{t-1} -  \dfrac{\alpha}{\sqrt{\hat{v}_t} + \epsilon}\Bigg(\beta_1\hat{m}_t + \dfrac{1-\beta_1}{1-\beta_1^t}g_t\Bigg) \end{cases}
+		\end{equation*}
+		\item AdaBelief
+		\begin{equation*}
+			\begin{cases}m_0 = 0\\ s_0 = 0\\ g_t = \nabla f(w_{t-1}) \\ m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \\ s_t = \beta_2 s_{t-1} + (1-\beta_2)(g_t - m_t)^2 + \epsilon\\
+				\hat{m}_t = \dfrac{m_t}{1 - \beta_1^t} \\ \hat{s}_t = \dfrac{s_t}{1 - \beta_2^t} \\ w_t = w_{t-1} - \alpha \dfrac{\hat{m}_t}{\sqrt{\hat{s}_t} + \epsilon} \end{cases}
+		\end{equation*}
+		\item Accelerated Gradient
+		\begin{equation*}
+			\begin{cases}v_t = w_{t-1} + \dfrac{t - 1}{t + 2} \big(w_{t-1} - w_{t-2} \big) \\
+			w_{t+1} = v_t - \alpha \nabla f(v_t) \end{cases}
+		\end{equation*}
+		\item RAdam
+		\begingroup
+			\scalebox{0.8}{
+				\begin{minipage}{1.2 \linewidth}
+					\begin{algorithm}[H]
+						\caption{Thuật toán RAdam}
+						\hspace*{\algorithmicindent} \textbf{Input:} {độ dài bước $\lbrace \alpha_t \rbrace_{t=1}^{T}$, các hệ số $\beta_1, \beta_2$, $w_0$ khởi tạo, hàm mục tiêu $f(w)$} \\
+						\hspace*{\algorithmicindent} \textbf{Output:} {$w$ đã được học}
+						\begin{algorithmic}[1]
+							\State{$m_0 \leftarrow 0$}
+							\State{$v_0 \leftarrow 0$}
+							\State{$\rho_{\infty} \leftarrow 2/(1-\beta_2)-1$}
+							\For{$t=1$ to $T$}
+								\State{$g_t \leftarrow \nabla f(w_{t-1})$}
+								\State{$m_t \leftarrow \beta_1 m_{t-1} + (1 - \beta_1)g_t$}
+								\State{$v_t \leftarrow \beta_2 v_{t-1} + (1 - \beta_2)g_t^2$}
+								\State{$\widehat{m}_t \leftarrow m_t / (1 - \beta_1^t)$}
+								\State{$\rho_t \leftarrow \rho_{\infty} - 2t\beta_2^t / (1 - \beta_2^t)$}
+								\If {$\rho_t < 4$}
+									\State{$\widehat{v}_t \leftarrow \sqrt{v_t / (1 - \beta_2^t)}$}
+									\State{$r_t \leftarrow \sqrt{\frac{(\rho_t - 4)(\rho_t - 2)\rho_{\infty}}{(\rho_{\infty} - 4)(\rho_{\infty} - 2)\rho_t}}$}
+									\State{$w_t \leftarrow w_{t-1} - \alpha r_t \widehat{m}_t / (\widehat{v}_t + \epsilon)$}
+								\Else
+									\State{$w_t \leftarrow w_{t-1} - \alpha \widehat{m}_t$}
+								\EndIf
+							\EndFor
+							\State \Return $w_T$
+						\end{algorithmic}
+					\end{algorithm}
+				\end{minipage}
+			}
+		\endgroup
+		\item Avagrad
+		\begin{equation*}
+			\begin{cases} w_0 \in \mathbb{R}^d \\ m_0 = 0 \\ v_0 = 0 \\
+			g_t = \nabla f(w_{t-1}) \\
+			m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t \\
+			\eta_t = \dfrac{1}{\sqrt{v_{t-1}} + \epsilon} \\
+			w_t = w_{t-1} - \alpha \dfrac{\eta_t}{\lVert \eta_t / \sqrt{d} \rVert_2} \odot m_t \\
+			v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\end{cases}
+		\end{equation*}
+	\end{enumerate}
+\end{frame}
+
 \end{document}
