@@ -129,6 +129,51 @@
     
 \end{frame}
 
+\begin{frame}[allowframebreaks]{So sánh ba thuật toán}
+	\begin{itemize}
+		\item Hàm loss của Linear Regression:
+		\begin{equation*}
+			f(w) = \lVert X w - y \rVert_2^2
+		\end{equation*}
+		\item Ta đặt kích thước các ma trận $X \in \mathbb{R}^{m \times n}, y \in \mathbb{R}^m, w \in \mathbb{R}^n$, ta có $\mathrm{dom}(f)=\mathbb{R}^{n}$ là tập lồi
+		\begin{equation*}
+			\begin{aligned}
+				f(w) &= (Xw - y)^T (Xw - y) \\
+				&=w^T X^T X w - w^TX^Ty - y^T Xw + y^T y
+			\end{aligned}
+		\end{equation*}
+		\item Do $w^TX^Ty$ và $y^TXw$ là hai số vô hướng và $(w^TX^Ty)^T=y^TXw$ nên $w^TX^Ty=y^TXw$ (chuyển vị của một số vô hướng bằng chính nó) nên:
+		\begin{equation*}
+			\begin{aligned}
+				f(w) &= w^T X^T X w - w^TX^Ty - y^T Xw + y^T y\\
+				&=w^T X^T X w-2w^TX^Ty+y^Ty
+			\end{aligned}
+		\end{equation*}
+		\item Ta tính Gradient của $f(w)$ theo $w$:
+		\begin{equation*}
+			\nabla f(w) =\Big\lbrack X^TX + (X^TX)^T \Big\rbrack w - 2X^Ty = 2X^T X w - 2 X^T y
+		\end{equation*}
+		\item Ta tính ma trận Hessian của $f(w)$ theo $w$:
+		\begin{equation*}
+			\nabla^2 f(w) = 2X^T X
+		\end{equation*}
+		\item Ta xét:
+		\begin{equation*}
+			p^T \nabla^2 f(w) p = 2 p^T X^T X p = 2 (Xp)^TXp \geq 0 \thickspace\forall \thickspace p \in \mathbb{R}^{n}
+		\end{equation*}
+		nên:
+		\begin{equation*}
+			\nabla^2 f(w) \succeq 0 \thickspace \forall w \in \mathbb{R}^{n}
+		\end{equation*}
+		\item Vì $\mathrm{dom}(f)$ là tập lồi và $\nabla^2 f(w) \succeq 0$ nên hàm $f(w)$ là một hàm lồi.
+	\end{itemize}
+	Hàm loss được sử dụng trong lập trình:
+	\begin{equation*}
+		f(w) = \dfrac{1}{n}\sum_{i=1}^{n}\Big( x_i^T w - y_i \Big)^2
+	\end{equation*}
+	với $(x_i, y_i) \in \mathbb{R}^{n+1}, i=1, 2, \dots, n$ là cặp dữ liệu đầu vào và nhãn tương ứng với $w \in \mathbb{R}^n$
+\end{frame}
+
 \begin{frame}[allowframebreaks]{Tài liệu tham khảo}
     \printbibliography
 \end{frame}
@@ -224,6 +269,27 @@
 			\eta_t = \dfrac{1}{\sqrt{v_{t-1}} + \epsilon} \\
 			w_t = w_{t-1} - \alpha \dfrac{\eta_t}{\lVert \eta_t / \sqrt{d} \rVert_2} \odot m_t \\
 			v_t = \beta_2 v_{t-1} + (1 - \beta_2) g_t^2\end{cases}
+		\end{equation*}
+		\item BFGS
+		\begin{equation*}
+			\begin{cases} \text{Khởi tạo } H_0 \\
+			g_t = \nabla f(w_{t-1}) \\
+			p_t = H_{t-1} g_t \\
+			w_t = w_{t-1} - \alpha p_t \\
+			s_t = w_t - w_{t-1} \\
+			y_t = \nabla f(w_t) - \nabla f(w_{t-1}) \\
+			H_t = \Bigg(I - \dfrac{s_t y_t^T}{y_t^T s_t} \Bigg)H_{t-1}\Bigg( I - \dfrac{y_t s_t^T}{y_t^T s_t} \Bigg) + \dfrac{s_t s_t^T}{y_t^T s_t}\end{cases}
+		\end{equation*}
+		\framebreak
+		\item DFP
+		\begin{equation*}
+			\begin{cases} \text{Khởi tạo } H_0 \\
+			g_t = \nabla f(w_{t-1}) \\
+			p_t = H_{t-1} g_t \\
+			w_t = w_{t-1} - \alpha p_t \\
+			s_t = w_t - w_{t-1} \\
+			y_t = \nabla f(w_t) - \nabla f(w_{t-1}) \\
+			H_t = H_{t-1} - \dfrac{H_{t-1}y_t y_t^T H_{t-1}}{y_t^T H_{t-1} y_t} + \dfrac{s_t s_t^T}{y_t^T s_t}\end{cases}
 		\end{equation*}
 	\end{enumerate}
 \end{frame}
