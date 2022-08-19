@@ -121,7 +121,6 @@
 \begin{frame}{Nội dung}
 
     \begin{enumerate}
-        \item Tiền xử lý dữ liệu
         \item So sánh ba thuật toán
         \item So sánh các thuật toán
         \item Kết luận
@@ -172,6 +171,97 @@
 		f(w) = \dfrac{1}{n}\sum_{i=1}^{n}\Big( x_i^T w - y_i \Big)^2
 	\end{equation*}
 	với $(x_i, y_i) \in \mathbb{R}^{n+1}, i=1, 2, \dots, n$ là cặp dữ liệu đầu vào và nhãn tương ứng với $w \in \mathbb{R}^n$
+	
+	\framebreak
+	Nghiệm tối ưu (khi các cột của ma trận $X$ độc lập tuyến tính):
+
+	\begin{equation*}
+		w^{*} = \Big(X^T X \Big)^{-1}X^T y
+	\end{equation*}
+
+	Với dữ liệu tập train:
+
+	\begin{equation*}
+		w_{train}^{*} = 
+	\end{equation*}
+
+	và giá trị hàm loss tương ứng:
+
+	\begin{equation*}
+		f(w_{train}^{*}, \text{ data }_{\text{train}}) \approx 0.04804
+	\end{equation*}
+
+	\begin{equation*}
+		f(w_{train}^{*}, \text{ data }_{\text{val}}) \approx 0.04959
+	\end{equation*}
+
+	\framebreak
+	
+	Với dữ liệu tập validation:
+
+	\begin{equation*}
+		w_{val}^{*} = 
+	\end{equation*}
+
+	và giá trị hàm loss tương ứng:
+
+	\begin{equation*}
+		f(w_{val}^{*}, \text{ data }_{\text{train}}) \approx 0.06977
+	\end{equation*}
+
+	\begin{equation*}
+		f(w_{val}^{*}, \text{ data }_{\text{val}}) \approx 0.06900
+	\end{equation*}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{So sánh các thuật toán}
+	Các thuật toán được so sánh:
+	\begin{multicols}{3}
+	\begin{enumerate}
+		\item Gradient Descent
+  		\item Newton
+    	\item Accelerated
+     	\item BFGS
+      	\item DFP
+        \item Momentum
+        \item Adagrad
+        \item Adadelta
+        \item RMSProp
+        \item Adam
+        \item Adamax
+        \item AMSGrad
+        \item Nadam
+        \item AdaBelief
+        \item RAdam
+        \item Avagrad    
+	\end{enumerate}
+	\end{multicols}
+	Các step size: $10^{-4}, 10^{-3}, 10^{-2}, 10^{-1}, 1, 2, 5, 10$
+	
+	Các kiểu chọn step size từng bước: Fixed, Backtracking, Inverse decay, Warmup, Triangular Cyclic
+
+	%\begin{figure}
+	%	\centering
+	%	\begin{subfigure}[b]{0.45\textwidth}
+	%		\centering
+	%		\includegraphics[width=\textwidth]{Thanh/warmup_lr.png}
+	%		\caption{$y=x$}
+	%	\end{subfigure}
+	%	\hfill
+	%	\begin{subfigure}[b]{0.45\textwidth}
+	%		\centering
+	%		\includegraphics[width=\textwidth]{Thanh/triangular_cyclic.png}
+	%		\caption{$y=3sinx$}
+	%	\end{subfigure}
+	%\end{figure}
+	\begin{figure}[!htp]
+		% Maximum length
+		\subfloat[Warmup step size]{\label{fig1:a}\includegraphics[width=0.5\linewidth]{Thanh/warmup_lr.png}}\hfill
+		\subfloat[Triangular cyclic step size]{\label{fig1:b}\includegraphics[width=0.5\linewidth]{Thanh/triangular_cyclic.png}}%
+	  \end{figure}
+
+	Mỗi nhóm gồm thuật toán tối ưu, step size, kiểu chọn step size sẽ tạo thành một tổ hợp.
+	Một tổ hợp được dùng để train 5000 bước
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Tài liệu tham khảo}
