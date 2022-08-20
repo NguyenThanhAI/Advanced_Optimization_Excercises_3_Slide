@@ -280,6 +280,7 @@
 
 	\begin{table} [h!]
 		\centering
+		\resizebox{\linewidth}{!}{
 		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
 		\hline
 		Thuật toán & Steps & Schedule & Step size & Loss & MAE & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
@@ -302,6 +303,7 @@
 		AdaBelief & 41 &  backtracking &  5 &  0.04647 &  0.1393 &  294 &  0.1180 &  8.4853e-05 &  0.6585 \\ [1ex]
 		\hline
 		\end{tabular}
+		}
 		\caption{So sánh thời gian đạt điều kiện hội tụ trên tập train}
 	\end{table}
 
@@ -310,6 +312,7 @@
 \begin{frame}{So sánh các thuật toán}
 	\begin{table} [h!]
 		\centering
+		\resizebox{\linewidth}{!}{
 		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
 		\hline
 		Thuật toán & Steps & Schedule & Step size & Loss & MAE & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
@@ -332,6 +335,7 @@
 		AdaBelief & 23 &  backtracking &  5 &  0.04848 &  0.1422 &  129 &  0.06500 &  0.0003 &  0.6276 \\ [1ex]
 		\hline
 		\end{tabular}
+		}
 		\caption{So sánh thời gian đạt điều kiện hội tụ trên tập validation}
 	\end{table}
 
@@ -341,6 +345,7 @@
 
 	\begin{table} [h!]
 		\centering
+		\resizebox{\linewidth}{!}{
 		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
 		\hline
 		Thuật toán & Min loss & Schedule & Step size & MAE & Steps & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
@@ -363,6 +368,7 @@
 		AdaBelief & 0.04642 &  backtracking &  0.0001 &  0.1396 &  1794 &  19980 &  6.0632 &  3.2365e-11 &  0.6589 \\ [1ex]
 		\hline
 		\end{tabular}
+		}
 		\caption{So sánh thời gian đạt giá trị loss nhỏ nhất trên tập train}
 	\end{table}
 
@@ -373,6 +379,7 @@
 
 	\begin{table} [h!]
 		\centering
+		\resizebox{\linewidth}{!}{
 		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
 		\hline
 		Thuật toán & Min loss & Schedule & Step size & MAE & Steps & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
@@ -395,6 +402,7 @@
 		AdaBelief & 0.04735 &  inverse decay &  1 &  0.1406 &  203 &  203 &  0.1407 &  0.0002 &  0.6363 \\ [1ex]
 		\hline
 		\end{tabular}
+		}
 		\caption{So sánh thời gian đạt giá trị loss nhỏ nhất trên tập validation}
 	\end{table}
 
