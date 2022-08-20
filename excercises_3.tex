@@ -121,6 +121,7 @@
 \begin{frame}{Nội dung}
 
     \begin{enumerate}
+		\item Bài toán hồi quy tuyến tính
         \item So sánh ba thuật toán
         \item So sánh các thuật toán
         \item Kết luận
@@ -128,7 +129,7 @@
     
 \end{frame}
 
-\begin{frame}[allowframebreaks]{So sánh ba thuật toán}
+\begin{frame}[allowframebreaks]{Bài toán hồi quy tuyến tính}
 	\begin{itemize}
 		\item Hàm loss của Linear Regression:
 		\begin{equation*}
@@ -182,7 +183,7 @@
 	Với dữ liệu tập train:
 
 	\begin{equation*}
-		w_{train}^{*} = 
+		w_{train}^{*} = \begin{bmatrix} -1.3962 &  0.3796 & 0.5107 & -0.04332 &\\ 0.07553 & 0.5786 & 0.1703 & 0.07757 &\\ 1.2154  & 1.2375 &  0.8117  & 0.16389 &\\ -0.5221 &  0.4350 & -0.0788 & -0.5564 \end{bmatrix}
 	\end{equation*}
 
 	và giá trị hàm loss tương ứng:
@@ -200,7 +201,8 @@
 	Với dữ liệu tập validation:
 
 	\begin{equation*}
-		w_{val}^{*} = 
+		\centering
+		w_{val}^{*} = \begin{bmatrix} -0.8715 &  0.2894 & -2.0394 & 0.08472 &\\ 0.04182 &  0.6075 & 0.1884 &  0.05182 &\\ 1.1757 &   2.07476 &    1.6335  & 0.04724 & \\ -0.3275 & 0.4018 & -0.0500 & -0.5091  \end{bmatrix}
 	\end{equation*}
 
 	và giá trị hàm loss tương ứng:
