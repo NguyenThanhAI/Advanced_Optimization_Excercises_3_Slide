@@ -368,6 +368,38 @@
 
 \end{frame}
 
+
+\begin{frame}{So sánh các thuật toán}
+
+	\begin{table} [h!]
+		\centering
+		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
+		\hline
+		Thuật toán & Min loss & Schedule & Step size & MAE & Steps & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
+		\hline \hline
+		GD & 0.04720 &  cyclic &  1 &  0.1400 &  1778 &  1778 &  1.2055 &  0.0001 &  0.6374 \\ \hline
+		Newton & 0.04733 &  fixed &  0.01 &  0.14063 &  1436 &  1436 &  2.2674 &  0.0009 &  0.6364  \\ \hline
+		Accelerated & 0.04727 &  cyclic &  0.01 &  0.1405 &  1371 &  1371 &  1.9054 &  0.0007 &  0.6369\\ \hline
+		BFGS &0.04729 &  warmup &  0.1 &  0.1405 &  328 &  328 &  0.4802 &  0.0002 &  0.6368 \\ \hline
+		DFP & 0.04727 &  warmup &  1 &  0.1391 &  446 &  446 &  0.6439 &  0.0006 &  0.6369 \\ \hline
+		Adam & 0.04730 &  fixed &  0.001 &  0.1409 &  1073 &  1073 &  0.7792 &  0.0004 &  0.6367\\ \hline
+		Avagrad & 0.04958 &  backtracking &  10 &  0.1428 &  4999 &  5055 &  9.5528 &  0.001417 &  0.6192 \\ \hline 
+		RAdam &0.04731 &  backtracking &  0.001 &  0.1410 &  1095 &  1095 &  2.2251 &  0.0005 &  0.6366 \\ \hline
+		Momentum & 0.04732 &  backtracking &  10 &  0.1409 &  140 &  634 &  0.3140 &  0.0004 &  0.6365 \\ \hline
+		Adagrad & 0.04735 &  fixed &  2 &  0.1410 &  648 &  648 &  0.5333 &  0.0007 &  0.6363 \\ \hline
+		RMSProp & 0.04730 &  inverse decay &  1 &  0.1408 &  607 &  607 &  0.4155 &  0.0002 &  0.6367\\ \hline
+		Adadelta & 0.04731 &  cyclic &  1 &  0.1408 &  4467 &  4467 &  3.0681 &  0.0002 &  0.6366\\ \hline
+		Adamax &0.04732 &  backtracking &  5 &  0.1409 &  115 &  660 &  0.2840 &  0.0005 &  0.6365 \\ \hline
+		Nadam & 0.04731 &  backtracking &  0.001 &  0.1409 &  1169 &  1169 &  1.9850 &  0.0005 &  0.6366 \\ \hline
+		AMSGrad & 0.04734 &  fixed &  2 &  0.1411 &  468 &  468 &  0.3943 &  0.0007 &  0.6364 \\ \hline
+		AdaBelief & 0.04735 &  inverse decay &  1 &  0.1406 &  203 &  203 &  0.1407 &  0.0002 &  0.6363 \\ [1ex]
+		\hline
+		\end{tabular}
+		\caption{So sánh thời gian đạt giá trị loss nhỏ nhất trên tập validation}
+	\end{table}
+
+\end{frame}
+
 \begin{frame}[allowframebreaks]{Tài liệu tham khảo}
     \printbibliography
 \end{frame}
