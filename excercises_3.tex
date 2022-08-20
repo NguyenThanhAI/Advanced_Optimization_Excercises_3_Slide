@@ -264,6 +264,42 @@
 
 	Mỗi nhóm gồm thuật toán tối ưu, step size, kiểu chọn step size sẽ tạo thành một tổ hợp.
 	Một tổ hợp được dùng để train 5000 bước
+
+	Thời gian đạt điều kiện hội tụ nhỏ nhất của từng thuật toán:
+	
+
+	Tập train (sự thay đổi loss tương đối nhỏ hơn $10^{-3}$ và chuẩn của vector gradient nhỏ hơn $10^{-4}$)
+	Tập train (sự thay đổi loss tương đối nhỏ hơn $10^{-3}$ và chuẩn của vector gradient nhỏ hơn $10^{-3}$)
+
+	\begin{table} [h!]
+		\centering
+		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
+		\hline
+		Thuật toán & Steps & Schedule & Step size & Loss & MAE & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
+		\hline \hline
+		GD & 304 & backtracking & 5 & 0.04698 & 0.1396 & 1218 & 0.7623 & 9.7491e-05 & 0.6548 \\ \hline
+		Newton & 1 &  backtracking &  1 &  0.04642&  0.1396 & 1 &  0.004000&  1.7353e-16&  0.6589  \\ \hline
+		Accelerated & 90 &  backtracking &  5 &  0.04678 &  0.1396 &  434 &  0.2740 &  8.9588e-05 &  0.6562 \\ \hline
+		BFGS &28 &  backtracking &  10 &  0.04675 &  0.1399 &  82 &  0.07697 &  6.7362e-05 &  0.6565 \\ \hline
+		DFP & 42 &  backtracking &  10 &  0.04690 &  0.1395 &  109 &  0.1965 &  9.5577e-05 &  0.6554 \\ \hline
+		Adam & 55 &  backtracking &  5 &  0.04649 &  0.1394 &  383 &  0.1470 &  8.5136e-05 &  0.6584\\ \hline
+		Avagrad & Null \\ \hline 
+		RAdam &64 &  backtracking &  2 &  0.04643 &  0.1394 &  288 &  0.1457 &  5.9528e-05 &  0.6588 \\ \hline
+		Momentum &  83 &  backtracking &  5 &  0.04685 &  0.1401 &  495 &  0.2240 &  9.9035e-05 &  0.6557 \\ \hline
+		Adagrad & 223 &  backtracking &  2 &  0.0465 &  0.1392 &  629 &  0.5130 &  9.5012e-05 &  0.6579 \\ \hline
+		RMSProp & 301 &  backtracking &  5 &  0.04644 &  0.1400 &  3130 &  0.9421 &  8.6495e-05 &  0.6588\\ \hline
+		Adadelta & 525 &  backtracking &  2 &  0.04654 &  0.1398 &  12219 &  2.7243 &  9.9677e-05 &  0.6581\\ \hline
+		Adamax & 65 &  backtracking &  5 &  0.04675 &  0.1403 &  413 &  0.1679 &  9.3636e-05 &  0.6565 \\ \hline
+		Nadam & 77 &  backtracking &  5 &  0.04655 &  0.1394 &  611 &  0.2230 &  8.5295e-05 &  0.6580 \\ \hline
+		AMSGrad & 76 &  backtracking &  10 &  0.04650 &  0.1393 &  586 &  0.2758 &  7.6637e-05 &  0.6583 \\ \hline
+		AdaBelief & 41 &  backtracking &  5 &  0.04647 &  0.1393 &  294 &  0.1180 &  8.4853e-05 &  0.6585 \\ [1ex]
+		\hline
+		\end{tabular}
+		\caption{So sánh thời gian đạt điều kiện hội tụ trên tập train}
+	\end{table}
+
+
+
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Tài liệu tham khảo}
