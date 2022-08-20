@@ -216,7 +216,7 @@
 	\end{equation*}
 \end{frame}
 
-\begin{frame}[allowframebreaks]{So sánh các thuật toán}
+\begin{frame}{So sánh các thuật toán}
 	Các thuật toán được so sánh:
 	\begin{multicols}{3}
 	\begin{enumerate}
@@ -242,6 +242,7 @@
 	
 	Các kiểu chọn step size từng bước: Fixed, Backtracking, Inverse decay, Warmup, Triangular Cyclic
 
+\end{frame}
 	%\begin{figure}
 	%	\centering
 	%	\begin{subfigure}[b]{0.45\textwidth}
@@ -256,6 +257,8 @@
 	%		\caption{$y=3sinx$}
 	%	\end{subfigure}
 	%\end{figure}
+
+\begin{frame}{So sánh các thuật toán}
 	\begin{figure}[!htp]
 		% Maximum length
 		\subfloat[Warmup step size]{\label{fig1:a}\includegraphics[width=0.5\linewidth]{Thanh/warmup_lr.png}}\hfill
@@ -270,6 +273,10 @@
 
 	Tập train (sự thay đổi loss tương đối nhỏ hơn $10^{-3}$ và chuẩn của vector gradient nhỏ hơn $10^{-4}$)
 	Tập train (sự thay đổi loss tương đối nhỏ hơn $10^{-3}$ và chuẩn của vector gradient nhỏ hơn $10^{-3}$)
+
+\end{frame}
+
+\begin{frame}{So sánh các thuật toán}
 
 	\begin{table} [h!]
 		\centering
@@ -298,7 +305,66 @@
 		\caption{So sánh thời gian đạt điều kiện hội tụ trên tập train}
 	\end{table}
 
+\end{frame}
 
+\begin{frame}{So sánh các thuật toán}
+	\begin{table} [h!]
+		\centering
+		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
+		\hline
+		Thuật toán & Steps & Schedule & Step size & Loss & MAE & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
+		\hline \hline
+		GD & 127 &  backtracking &  5 &  0.04840 &  0.1409 &  511 &  0.3030 &  0.0003 &  0.6282 \\ \hline
+		Newton & 1 &  backtracking &  1 &  0.04750 &  0.1413 &  1 &  0.0040 &  0.0007 &  0.6351  \\ \hline
+		Accelerated & 37 &  backtracking &  5 &  0.04891 &  0.1437 &  179 &  0.1119 &  0.0007 &  0.6243 \\ \hline
+		BFGS &11 &  backtracking &  10 &  0.0492 &  0.1437 &  35 &  0.02998 &  0.0006 &  0.6214 \\ \hline
+		DFP & 15 &  backtracking &  10 &  0.04915 &  0.1443 &  39 &  0.09148 &  0.0006 &  0.6225 \\ \hline
+		Adam & 26 &  backtracking &  5 &  0.04797 &  0.1431 &  130 &  0.06000 &  0.0007 &  0.6315\\ \hline
+		Avagrad & 129 &  fixed &  10 &  0.0689 &  0.1707 &  129 &  0.1146 &  0.0009 &  0.4704 \\ \hline 
+		RAdam &31 &  backtracking &  1 &  0.04846 &  0.1421 &  66 &  0.06105 &  0.0003 &  0.6277 \\ \hline
+		Momentum &  33 &  backtracking &  5 &  0.05161 &  0.1529 &  428 &  0.1320 &  0.0009 &  0.6036 \\ \hline
+		Adagrad & 86 &  backtracking &  2 &  0.04813 &  0.1420 &  246 &  0.1910 &  0.0009 &  0.6303 \\ \hline
+		RMSProp & 301 &  backtracking &  5 &  0.04761 &  0.1417 &  3130 &  0.9421 &  0.0006 &  0.6343\\ \hline
+		Adadelta & 85 &  backtracking &  5 &  0.04833 &  0.1429 &  330 &  0.1920 &  0.0009 &  0.6288\\ \hline
+		Adamax &29 &  backtracking &  1 &  0.05057 &  0.1492 &  319 &  0.1200 &  0.0009 &  0.6116 \\ \hline
+		Nadam & 32 &  backtracking &  2 &  0.04873 &  0.1449 &  147 &  0.07400 &  0.0009 &  0.6257 \\ \hline
+		AMSGrad & 20 &  backtracking &  5 &  0.05018 &  0.1434 &  150 &  0.057002 &  0.0006 &  0.6146 \\ \hline
+		AdaBelief & 23 &  backtracking &  5 &  0.04848 &  0.1422 &  129 &  0.06500 &  0.0003 &  0.6276 \\ [1ex]
+		\hline
+		\end{tabular}
+		\caption{So sánh thời gian đạt điều kiện hội tụ trên tập validation}
+	\end{table}
+
+\end{frame}
+
+\begin{frame}{So sánh các thuật toán}
+
+	\begin{table} [h!]
+		\centering
+		\begin{tabular}{ || c | c | c | c | c | c | c | c | c | c|| }
+		\hline
+		Thuật toán & Min loss & Schedule & Step size & MAE & Steps & Inner steps & Time (s) & Grad norm & $R^2$ \\ [0.5 ex]
+		\hline \hline
+		GD & 0.04642 &  backtracking &  5 &  0.1395 &  4999 &  19998 &  11.9320 &  5.9560e-06 &  0.6589 \\ \hline
+		Newton & 0.04642 &  inverse decay &  2 &  0.1395 &  4285 &  4285 &  6.4144 &  1.1830e-05 &  0.6589  \\ \hline
+		Accelerated & 0.04642 &  backtracking &  5 &  0.1396 &  4855 &  23379 &  16.02871 &  2.7890e-09 &  0.6589 \\ \hline
+		BFGS &0.04642 &  warmup &  1 &  0.1396 &  3708 &  3708 &  6.1286 &  6.8517e-14 &  0.6589 \\ \hline
+		DFP & 0.04642 &  warmup &  1 &  0.1396 &  4495 &  4495 &  6.3558 &  2.6095e-12 &  0.6589 \\ \hline
+		Adam & 0.04642 &  backtracking &  0.001 &  0.1396 &  3664 &  33971 &  12.6386 &  5.4339e-11 &  0.6589\\ \hline
+		Avagrad & 0.04972 &  backtracking &  10 &  0.1411 &  4999 &  5055 &  9.5528 &  0.0008 &  0.6347 \\ \hline 
+		RAdam &0.04642 &  backtracking &  0.001 &  0.1396 &  3987 &  41786 &  14.8537 &  8.07073e-11 &  0.6589 \\ \hline
+		Momentum &  0.04642 &  backtracking &  10 &  0.1396 &  4612 &  17849 &  9.9354 &  4.5472e-11 &  0.6589 \\ \hline
+		Adagrad & 0.04642 &  backtracking &  1 &  0.1396 &  3986 &  8605 &  8.1345 &  1.2800e-10 &  0.6589 \\ \hline
+		RMSProp & 0.04642 &  backtracking &  0.1 &  0.1396 &  4874 &  97153 &  26.7683 &  1.9558e-12 &  0.6589\\ \hline
+		Adadelta & 0.04642 &  backtracking &  2 &  0.1396 &  4999 &  1231808 &  218.7172 &  1.6255e-05 &  0.6589\\ \hline
+		Adamax &0.04642 &  backtracking &  0.01 &  0.13961 &  4104 &  75850 &  18.7867 &  2.2710e-11 &  0.6589 \\ \hline
+		Nadam & 0.04642 &  backtracking &  0.01 &  0.1396 &  4882 &  107711 &  24.3817 &  5.6385e-11 &  0.6589 \\ \hline
+		AMSGrad & 0.04642 &  warmup &  2 &  0.1396 &  4452 &  4452 &  3.5742 &  1.7151e-12 &  0.6589 \\ \hline
+		AdaBelief & 0.04642 &  backtracking &  0.0001 &  0.1396 &  1794 &  19980 &  6.0632 &  3.2365e-11 &  0.6589 \\ [1ex]
+		\hline
+		\end{tabular}
+		\caption{So sánh thời gian đạt giá trị loss nhỏ nhất trên tập train}
+	\end{table}
 
 \end{frame}
 
