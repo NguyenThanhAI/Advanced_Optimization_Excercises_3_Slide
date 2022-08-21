@@ -171,7 +171,7 @@
 	\begin{equation*}
 		f(w) = \dfrac{1}{n}\sum_{i=1}^{n}\Big( x_i^T w - y_i \Big)^2
 	\end{equation*}
-	với $(x_i, y_i) \in \mathbb{R}^{n+1}, i=1, 2, \dots, n$ là cặp dữ liệu đầu vào và nhãn tương ứng với $w \in \mathbb{R}^n$
+	với $(x_i, y_i) \in \mathbb{R}^{n+1}, i=1, 2, \dots, n$ là cặp dữ liệu đầu vào và nhãn tương ứng và $w \in \mathbb{R}^n$
 	
 	\framebreak
 	Nghiệm tối ưu (khi các cột của ma trận $X$ độc lập tuyến tính):
@@ -270,6 +270,7 @@
 		\centering
 		\includegraphics[width=11cm]{Thinh/8.png}
 	\end{figure}
+	Kết luận: Lựa chọn initial = 1
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
@@ -507,13 +508,6 @@
 	Accelerated Gradient: lựa chọn fixed step size (0.1) để so sánh với các thuật toán khác
 \end{frame}
 
-\begin{frame}{So sánh ba thuật toán}
-	\framesubtitle{GD vs. Accelerated gradient vs. Newton}
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=10cm]{Thinh/24.png}
-	\end{figure}
-\end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{Accelerated gradient: Fixed vs. backtracking vs. inverse decay step sizes }
@@ -539,6 +533,15 @@
 	\end{table}
 
 	Với bài toán này, thuật toán Newton hội tụ nhanh nhất, sau đó là Accelerated gradient và thuật toán GD hội tụ chậm nhất
+\end{frame}
+
+
+\begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{GD vs. Accelerated gradient vs. Newton}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=10cm]{Thinh/24.png}
+	\end{figure}
 \end{frame}
 
 
@@ -839,7 +842,7 @@
 
 \begin{frame}{Kết luận}
 	\begin{itemize}
-		\item Thuật toán Newton cho tốc độ hội tụ nhanh
+		\item Thuật toán Newton cho tốc độ hội tụ nhanh nhưng rất dễ chịu ảnh hưởng của sai số
   		\item Phương pháp backtracking tìm step size cho tốc độ hội tụ rất tốt
     	\item Các phương pháp cyclic, warmup lại cho kết quả khá tốt trên tập validation (dù tốc độ hội tụ hoặc giảm không tốt cho tập train)
      	\item Khoảng thời gian đầu, tốc độ giảm của Accelerated Gradient nhanh hơn hẳn với GD dù chi phí tính toán không khác biết nhiều
