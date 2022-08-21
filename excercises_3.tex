@@ -269,6 +269,21 @@
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
+	\centering
+	\begin{table}[]
+		\resizebox{\linewidth}{!}{
+		\begin{tabular}{|| c| c| c||}
+		\hline
+		   Schedule                 & Loss \textless{}= 0.05                & Norm\_Gradient \textless{}= 1e-4      \\ \hline
+		Fixed step size (1) & 0.001 (1 step)                        & 0.001 (1 step)                        \\ \hline
+		Backtracking (10)   & 0.007 (2 outer steps, 4 steps total ) & 0.019 (6 outer steps, 20 steps total) \\ [1ex]
+		\hline
+		\end{tabular}
+		}
+	\end{table}
+\end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD: Inverse decay}
 	\begin{figure}[h!]
 		\centering
@@ -698,6 +713,10 @@
 		}
 		\caption{So sánh thời gian đạt giá trị loss nhỏ nhất trên tập validation}
 	\end{table}
+
+\end{frame}
+
+\begin{frame}{Kết luận}
 
 \end{frame}
 
