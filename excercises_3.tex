@@ -196,24 +196,6 @@
 		f(w_{train}^{*}, \text{ data }_{\text{val}}) \approx 0.04959
 	\end{equation*}
 
-	\framebreak
-	
-	Với dữ liệu tập validation:
-
-	\begin{equation*}
-		\centering
-		w_{val}^{*} = \begin{bmatrix} -0.8715 &  0.2894 & -2.0394 & 0.08472 &\\ 0.04182 &  0.6075 & 0.1884 &  0.05182 &\\ 1.1757 &   2.07476 &    1.6335  & 0.04724 & \\ -0.3275 & 0.4018 & -0.0500 & -0.5091  \end{bmatrix}
-	\end{equation*}
-
-	và giá trị hàm loss tương ứng:
-
-	\begin{equation*}
-		f(w_{val}^{*}, \text{ data }_{\text{train}}) \approx 0.06977
-	\end{equation*}
-
-	\begin{equation*}
-		f(w_{val}^{*}, \text{ data }_{\text{val}}) \approx 0.06900
-	\end{equation*}
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
@@ -241,6 +223,7 @@
 		\includegraphics[width=11cm]{Thinh/3.png}
 	  \end{figure}
 
+
 \end{frame}
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD: Fixed step sizes}
@@ -249,6 +232,7 @@
 		\centering
 		\includegraphics[width=12cm]{Thinh/4.png}
 	  \end{figure}
+	  Kết luận: Lựa chọn fixed step size = 0.1
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
@@ -266,6 +250,7 @@
 		\centering
 		\includegraphics[width=12cm]{Thinh/6.png}
 	\end{figure}
+	Kết luận: Lựa chọn initial = 10
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
@@ -317,6 +302,12 @@
 		\includegraphics[width=12cm]{Thinh/10.png}
 	\end{figure}
 
+	\begin{itemize}
+		\item Fixed step size (size = 0.1)
+		\item Backtracking (initial = 10)
+		\item Inverse decay (initial = 1)
+	\end{itemize}
+
 \end{frame}
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD: Fixed vs. backtracking vs. inverse decay step sizes}
@@ -325,11 +316,50 @@
 		\centering
 		\includegraphics[width=12cm]{Thinh/11.png}
 	\end{figure}
+
+	\begin{multicols}{2}
+	\begin{itemize}
+		\item Fixed step size (0.1): 0.3368s (501 steps) 
+		\item Backtracking (10): 0.1560s (65 outer steps, 321 steps total)
+		\item Inverse decay (1): không thể đạt được loss 0.05 (min loss = 0.0913)
+		\item Fixed step size (0.1): 1.4577s (2175 steps)
+		\item Backtracking (10): 0.6931s (305 outer steps, 1522 steps total)
+		\item Inverse decay (1): không thể đạt được norm grad 1e-4 (min = 0.0037)
+	\end{itemize}
+	\end{multicols}
+	
+\end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{GD: Fixed vs. backtracking vs. inverse decay step sizes}
+	\begin{itemize}
+		\item Fixed step size (size = 0.1)
+		\item Backtracking (initial = 10)
+		\item Inverse decay (initial = 1)
+
+	\end{itemize}
+	Kết luận:
+	\begin{itemize}
+		\item Invese decay (1): không hội tụ
+		\item Backtracking (10) có tổng số bước nhỏ hơn và hội tụ nhanh hơn so với fixed step size (size = 0.1)
+		GD: lựa chọn backtracking (10) để so sánh với các thuật toán khác.
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{Newton: Fixed step sizes}
+	\begin{itemize}
+		\item Step size 0.0001: không hội tụ
+		\item Step size 0.001: 10.6940s (7157 steps)
+		\item Step size 0.01: 1.0869s (713 steps)
+		\item Step size 0.1: 0.1060s (68 steps)
+		\item Step size 1: 0.001s (1 step)
+		\item Step size 2: không hội tụ
+		\item Step size 5: không hội tụ
+		\item Step size 10: không hội tụ
 
+	\end{itemize}
+	Chọn fixed step size = 1 
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
@@ -741,7 +771,12 @@
 \end{frame}
 
 \begin{frame}{Kết luận}
-
+	\begin{itemize}
+		\item Thuật toán Newton cho tốc độ hội tụ nhanh
+  		\item Phương pháp backtracking tìm step size cho tốc độ hội tụ rất tốt
+    	\item Các phương pháp cyclic, warmup lại cho kết quả khá tốt trên tập validation
+     	\item Khoảng thời gian đầu, tốc độ giảm của Accelerated Gradient nhanh hơn hẳn với GD dù chi phí tính toán không khác biết nhiều
+	\end{itemize}
 \end{frame}
 
 \begin{frame}[allowframebreaks]{Tài liệu tham khảo}
