@@ -230,7 +230,7 @@
 
 	  \begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/4.png}
+		\includegraphics[width=11cm]{Thinh/4.png}
 	  \end{figure}
 	  Kết luận: Lựa chọn fixed step size = 0.1
 \end{frame}
@@ -239,7 +239,7 @@
 	\framesubtitle{GD: Backtracking}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/5.png}
+		\includegraphics[width=11cm]{Thinh/5.png}
 	\end{figure}
 
 \end{frame}
@@ -248,31 +248,18 @@
 	\framesubtitle{GD: Backtracking}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/6.png}
+		\includegraphics[width=11cm]{Thinh/6.png}
 	\end{figure}
 	Kết luận: Lựa chọn initial = 10
 \end{frame}
 
-\begin{frame}{So sánh ba thuật toán}
-	\centering
-	\begin{table}[]
-		\resizebox{\linewidth}{!}{
-		\begin{tabular}{|| c| c| c||}
-		\hline
-		   Schedule                 & Loss \textless{}= 0.05                & Norm\_Gradient \textless{}= 1e-4      \\ \hline
-		Fixed step size (1) & 0.001 (1 step)                        & 0.001 (1 step)                        \\ \hline
-		Backtracking (10)   & 0.007 (2 outer steps, 4 steps total ) & 0.019 (6 outer steps, 20 steps total) \\ [1ex]
-		\hline
-		\end{tabular}
-		}
-	\end{table}
-\end{frame}
+
 
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD: Inverse decay}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/7.png}
+		\includegraphics[width=11cm]{Thinh/7.png}
 	\end{figure}
 \end{frame}
 
@@ -281,7 +268,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/8.png}
+		\includegraphics[width=11cm]{Thinh/8.png}
 	\end{figure}
 \end{frame}
 
@@ -299,7 +286,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/10.png}
+		\includegraphics[width=11cm]{Thinh/10.png}
 	\end{figure}
 
 	\begin{itemize}
@@ -314,9 +301,10 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/11.png}
+		\includegraphics[width=11cm]{Thinh/11.png}
 	\end{figure}
 
+	\begin{small}
 	\begin{multicols}{2}
 	\begin{itemize}
 		\item Fixed step size (0.1): 0.3368s (501 steps) 
@@ -327,6 +315,7 @@
 		\item Inverse decay (1): không thể đạt được norm grad 1e-4 (min = 0.0037)
 	\end{itemize}
 	\end{multicols}
+	\end{small}
 	
 \end{frame}
 
@@ -366,9 +355,27 @@
 	\framesubtitle{Newton: Backtracking}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=11cm]{Thinh/12.png}
+		\includegraphics[width=9cm]{Thinh/12.png}
 	\end{figure}
 	Kết luận: Lựa chọn initial = 10
+\end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{Newton: Fixed step size vs Backtracking}
+	\centering
+	\begin{table}[]
+		\resizebox{\linewidth}{!}{
+		\begin{tabular}{|| c| c| c||}
+		\hline
+		   Schedule                 & $\text{loss} \leq 0.05$                & $\text{grad norm} \leq 10^{-4}$      \\ \hline
+		Fixed step size (1) & 0.001 (1 step)                        & 0.001 (1 step)                        \\ \hline
+		Backtracking (10)   & 0.007 (2 outer steps, 4 steps total ) & 0.019 (6 outer steps, 20 steps total) \\ [1ex]
+		\hline
+		\end{tabular}
+		}
+	\end{table}
+	Newton: lựa chọn fixed step size (1) để so sánh với các thuật toán khác.
+
 \end{frame}
 
 
@@ -395,7 +402,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/15.png}
+		\includegraphics[width=11cm]{Thinh/15.png}
 	\end{figure}
 
 \end{frame}
@@ -404,7 +411,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/16.png}
+		\includegraphics[width=11cm]{Thinh/16.png}
 	\end{figure}
 
 \end{frame}
@@ -413,7 +420,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/17.png}
+		\includegraphics[width=11cm]{Thinh/17.png}
 	\end{figure}
 	Kết luận: Lựa chọn fixed step size = 0.1
 
@@ -423,7 +430,7 @@
 	\framesubtitle{Accelerated gradient: Backtracking}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/18.png}
+		\includegraphics[width=11cm]{Thinh/18.png}
 	\end{figure}
 	Kết luận: Lựa chọn initial = 10
 \end{frame}
@@ -432,7 +439,7 @@
 	\framesubtitle{Accelerated gradient: Inverse decay}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/19.png}
+		\includegraphics[width=11cm]{Thinh/19.png}
 	\end{figure}
 	20 bước đầu tiên và 1000 bước đầu tiên
 \end{frame}
@@ -441,7 +448,7 @@
 	\framesubtitle{Accelerated gradient: Inverse decay}
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/20.png}
+		\includegraphics[width=11cm]{Thinh/20.png}
 	\end{figure}
 	Bước 100-1000 và 1000-10000 => Loại 0.001, 0.001
 \end{frame}
@@ -451,7 +458,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/21.png}
+		\includegraphics[width=11cm]{Thinh/21.png}
 	\end{figure}
 	Bước 100-1000 và 1000-10000 => Loại 0.1
 \end{frame}
@@ -461,7 +468,7 @@
 
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=12cm]{Thinh/22.png}
+		\includegraphics[width=11cm]{Thinh/22.png}
 	\end{figure}
 	Kết luận: chọn initial = 2
 \end{frame}
@@ -834,7 +841,7 @@
 	\begin{itemize}
 		\item Thuật toán Newton cho tốc độ hội tụ nhanh
   		\item Phương pháp backtracking tìm step size cho tốc độ hội tụ rất tốt
-    	\item Các phương pháp cyclic, warmup lại cho kết quả khá tốt trên tập validation
+    	\item Các phương pháp cyclic, warmup lại cho kết quả khá tốt trên tập validation (dù tốc độ hội tụ hoặc giảm không tốt cho tập train)
      	\item Khoảng thời gian đầu, tốc độ giảm của Accelerated Gradient nhanh hơn hẳn với GD dù chi phí tính toán không khác biết nhiều
 	\end{itemize}
 \end{frame}
