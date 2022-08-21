@@ -470,7 +470,7 @@
 	\framesubtitle{Accelerated gradient: Fixed vs. backtracking vs. inverse decay step sizes }
 	\begin{figure}[h!]
 		\centering
-		\includegraphics[width=10cm]{Thinh/23.png}
+		\includegraphics[width=6cm]{Thinh/23.png}
 	\end{figure}
 	\begin{itemize}
 		\item Fixed step size (size = 0.1)
@@ -481,12 +481,59 @@
 \end{frame}
 
 \begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{Accelerated gradient: Fixed vs. backtracking vs. inverse decay step sizes }
+	
+\begin{table}[]
+	\centering
+	\resizebox{\linewidth}{!}{
+	\begin{tabular}{|| c| c| c||}
+	\hline
+						& $\text{loss} \leq 0.05$                    & $\text{grad norm } \leq 10^{-4}  $        \\ \hline
+	Fixed step size (1) & 0.0760s (55 steps)                        & 0.2309s (173 steps)                       \\ \hline
+	Backtracking (10)   & 0.0830s (28 outer steps, 157 steps total) & 0.2720s (91 outer steps, 524 steps total) \\ \hline
+	Inverse decay (2)   & 0.2020s (151 steps)                       & 0.7030s (529 steps)   \\     [1ex]   
+	\hline           
+	\end{tabular}
+	}
+	\end{table}
+
+	Accelerated Gradient: lựa chọn fixed step size (0.1) để so sánh với các thuật toán khác
+\end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD vs. Accelerated gradient vs. Newton}
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=10cm]{Thinh/24.png}
 	\end{figure}
 \end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{Accelerated gradient: Fixed vs. backtracking vs. inverse decay step sizes }
+	\begin{itemize}
+		\item GD (backtracking initial = 10)
+		\item Newton (fixed step size = 1)
+		\item Accelerated gradient (fixed step size = 0.1)
+
+	\end{itemize}
+
+	\begin{table}[]
+		\centering
+		\resizebox{\linewidth}{!}{
+		\begin{tabular}{|| c| c| c||}
+		\hline
+							 & $\text{loss} \leq 0.05$                    & $\text{grad norm } \leq 10^{-4}  $            \\ \hline
+		GD                   & 0.1560s (65 outer steps, 321 steps total) & 0.6931s (305 outer steps, 1522 steps total) \\ \hline
+		Newton               & 0.001s (1 step)                           & 0.001s (1 step)                             \\ \hline
+		Accelerated Gradient & 0.0760s (55 steps)                        & 0.2309s (173 steps)         \\     [1ex] 
+		\hline               
+		\end{tabular}
+		}
+	\end{table}
+
+	Với bài toán này, thuật toán Newton hội tụ nhanh nhất, sau đó là Accelerated gradient và thuật toán GD hội tụ chậm nhất
+\end{frame}
+
 
 \begin{frame}{So sánh ba thuật toán}
 	\framesubtitle{GD vs. Accelerated gradient vs. Newton}
@@ -509,6 +556,14 @@
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=10cm]{Thinh/27.png}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{So sánh ba thuật toán}
+	\framesubtitle{GD vs. Accelerated gradient vs. Newton}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=10cm]{Thinh/28.png}
 	\end{figure}
 \end{frame}
 
